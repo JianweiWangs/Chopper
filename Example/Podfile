@@ -1,7 +1,7 @@
 use_frameworks!
-
+platform :ios, '8.0'
 target 'Chopper_Example' do
-  pod 'Chopper', :path => '../'
+    pod 'Chopper', :path => '../'
 
   target 'Chopper_Tests' do
     inherit! :search_paths
