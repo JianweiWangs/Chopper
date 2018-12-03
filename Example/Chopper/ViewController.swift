@@ -14,14 +14,10 @@ extension ViewController: JavaScriptModuleInterface {
     var moduleMapping: [String : Dispatch] {
         return [
             "showAlert" : { message, callback in
-                print(message)
-                let frame = message.context.frameViewController
-                let title = message.params?["title"]
-                let message = message.params?["message"]
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                let alertAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
-                alert.addAction(alertAction)
-                frame.present(alert, animated: true, completion: nil)
+                print(message.params)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    callback(false, ["reason":"GG"])
+                })
             }
         ]
     }
@@ -42,19 +38,31 @@ class ViewController: UIViewController  {
         webview.load(URLRequest(url: URL(string: "https://www.baidu.com")!))
         webView.uiDelegate = self
         jsbridge = JavaScriptBridge(dataSource: self)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        do {
+            let script = try String(contentsOf: URL(string: "https://npm-cdn.herokuapp.com/@jianweiwangs/chopper@1.0.0/index.js")!)
+            webView.configuration.userContentController.addUserScript(
+                WKUserScript(
+                    source: script,
+                    injectionTime: .atDocumentStart,
+                    forMainFrameOnly: true
+                )
+            )
+        } catch let e {
+            print(e)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.webView.evaluateJavaScript("""
-window.webkit.messageHandlers.chopperNative.postMessage({
-    'module':'test',
-    'action':'showAlert',
-    'callbackID': 'ghuhygvbu87ygbuij8uhy',
-    'params': {
-        'title': 'Chopper',
-        'message': '这是一次 js call native 的测试'
-    }
+dispatch('test', 'showAlert', {
+  'title': 'Chopper',
+  'message': '这是一次 js call native 的测试'
+}, function (success, params) {
+  alert('callback isSuccess: ' + success + ' params: ' + params.reason)
 })
 
-""", completionHandler: nil)
+""", completionHandler: { (_, error) in
+    print(error ?? "")
+            })
         }
     }
 

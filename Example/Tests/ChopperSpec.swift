@@ -6,9 +6,10 @@ import Chopper
 
 class Module: JavaScriptModuleInterface {
 
-    var moduleMapping: [String : (JavaScriptMessage, () -> Void) -> Void] = [
+    var moduleMapping: [String : Dispatch] = [
         "showAlert": { message, callback in
             print(message)
+            callback(true, ["success":"true"])
         }
     ]
 
@@ -20,10 +21,10 @@ class TableOfContentsSpec: QuickSpec {
         describe("xxx") {
             let message = JavaScriptMessage(module: "name", action: "age")
             message.params = [
-                "key": "666"
+                "key": 666
             ]
-            print(message)
-//            print(message.dispathScript)
+            print(message.dispathScript)
+            print(message.callbackScript(isSuccess: true, param: ["name": "wangjianwei"]))
         }
     }
 }

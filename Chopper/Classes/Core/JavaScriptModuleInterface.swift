@@ -1,5 +1,5 @@
 //
-//  JavaScriptInterface.swift
+//  JavaScriptModuleInterface.swift
 //  Chopper
 //
 //  Created by 王健伟 on 2018/11/27.
@@ -32,8 +32,8 @@ public extension JavaScriptModuleInterface {
             return
         }
         message.context = target.context
-        nativeAction(message, {
-            target.webView.evaluateJavaScript("alert(\"调用成功\")", completionHandler: nil)
+        nativeAction(message, { (success, params) in
+            target.webView.evaluateJavaScript(message.callbackScript(isSuccess: success, param: params), completionHandler: nil)
         })
     }
     func send(message: JavaScriptMessage, target: JavaScriptBridgeDataSource) {
