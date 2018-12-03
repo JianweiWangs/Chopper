@@ -52,17 +52,17 @@ class ViewController: UIViewController  {
         }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.webView.evaluateJavaScript("""
+            self.webView.evaluateJavaScript(
+                """
 dispatch('test', 'showAlert', {
   'title': 'Chopper',
   'message': '这是一次 js call native 的测试'
 }, function (success, params) {
   alert('callback isSuccess: ' + success + ' params: ' + params.reason)
 })
-
-""", completionHandler: { (_, error) in
-    print(error ?? "")
-            })
+""",
+                completionHandler: nil
+            )
         }
     }
 
