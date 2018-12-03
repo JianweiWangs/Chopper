@@ -292,7 +292,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Chopper_Example/Pods-Chopper_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Chopper_Example/Pods-Chopper_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Chopper/Chopper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -303,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chopper_Example/Pods-Chopper_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chopper_Example/Pods-Chopper_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		94BDEA20644F02A2A8399A97 /* [CP] Embed Pods Frameworks */ = {
@@ -314,7 +314,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Chopper_Tests/Pods-Chopper_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Chopper_Tests/Pods-Chopper_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -327,7 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Chopper_Tests/Pods-Chopper_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Chopper_Tests/Pods-Chopper_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9BBDE9A8B1BD1F7DA2267E39 /* [CP] Check Pods Manifest.lock */ = {
