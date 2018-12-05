@@ -46,7 +46,7 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6A6568EBE0F4BAF0D5AAC5E4CCACF93C"
+            BlueprintIdentifier = "331A8BE561B796767C70396F6AC3FDE5"
             BuildableName = "Chopper.framework"
             BlueprintName = "Chopper"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
@@ -80,6 +80,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      disableMainThreadChecker = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"

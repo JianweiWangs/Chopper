@@ -14,6 +14,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* ChopperSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* ChopperSpec.swift */; };
+		7F62ABB521B7788C0097E18A /* TestModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F62ABB421B7788C0097E18A /* TestModule.swift */; };
 		9A76646EEEC85AD748377C5D /* Pods_Chopper_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69069E2FC6A8B8870FBEA80 /* Pods_Chopper_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* ChopperSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChopperSpec.swift; sourceTree = "<group>"; };
 		6DA6A397C57A05C578268068 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7F62ABB421B7788C0097E18A /* TestModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModule.swift; sourceTree = "<group>"; };
 		A2CF4FBCEC07C7AD48834B6B /* Pods-Chopper_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chopper_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chopper_Example/Pods-Chopper_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C364299492D271934DB0DDA1 /* Pods-Chopper_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chopper_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chopper_Tests/Pods-Chopper_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C61D0374318D7B32A0D6545E /* Pods-Chopper_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chopper_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chopper_Example/Pods-Chopper_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				7F62ABB421B7788C0097E18A /* TestModule.swift */,
 			);
 			name = "Example for Chopper";
 			path = Chopper;
@@ -360,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				7F62ABB521B7788C0097E18A /* TestModule.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

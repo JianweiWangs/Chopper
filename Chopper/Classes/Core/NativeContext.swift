@@ -7,7 +7,7 @@
 
 import WebKit
 
-public final class NativeContext: NSObject {
+public final class NativeContext {
     public let webView: WKWebView
     public let viewController: UIViewController
     public let frameViewController: UIViewController

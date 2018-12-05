@@ -10,20 +10,24 @@ import UIKit
 import WebKit
 import Chopper
 
-extension ViewController: JavaScriptModuleInterface {
-    var moduleMapping: [String : Dispatch] {
-        return [
-            "showAlert" : { message, callback in
-                print(message.params)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                    callback(false, ["reason":"GG"])
-                })
-            }
-        ]
+//MARK: Chopper
+
+extension ViewController : JavaScriptBridgeDataSource {
+
+    // 这里是当前控制器意图使用哪些模块的交互方法，比如这里有 test，以后可能会有诸如 base net ui pay 等 js 交互
+
+    var modules: [JavaScriptModuleInterface] {
+        return [TestModule()]
     }
-    var module: String {
-        return "test"
+
+    var viewController: UIViewController {
+        return self
     }
+
+    var webView: WKWebView {
+        return self.webview
+    }
+
 }
 
 class ViewController: UIViewController  {
@@ -34,10 +38,26 @@ class ViewController: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        jsbridge = JavaScriptBridge(dataSource: self)
+
+        setupWebView()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.evaluateJavaScript(script: showAlert)
+        }
+    }
+}
+
+
+
+//MARK: WKWebView
+
+extension ViewController: WKUIDelegate {
+
+    func setupWebView() {
         webview.load(URLRequest(url: URL(string: "https://www.baidu.com")!))
         webView.uiDelegate = self
-        jsbridge = JavaScriptBridge(dataSource: self)
         do {
             let script = try String(contentsOf: URL(string: "https://npm-cdn.herokuapp.com/@jianweiwangs/chopper@1.0.0/index.js")!)
             webView.configuration.userContentController.addUserScript(
@@ -50,49 +70,15 @@ class ViewController: UIViewController  {
         } catch let e {
             print(e)
         }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.webView.evaluateJavaScript(
-                """
-dispatch('test', 'showAlert', {
-  'title': 'Chopper',
-  'message': '这是一次 js call native 的测试'
-}, function (success, params) {
-  alert('callback isSuccess: ' + success + ' params: ' + params.reason)
-})
-""",
-                completionHandler: nil
-            )
-        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    deinit {
-        print("释放了")
-    }
-}
-
-
-extension ViewController : JavaScriptBridgeDataSource {
-
-    var viewController: UIViewController {
-        return self
+    func evaluateJavaScript(script: String) {
+        self.webView.evaluateJavaScript(
+            script,
+            completionHandler: nil
+        )
     }
 
-    var webView: WKWebView {
-        return self.webview
-    }
-
-    var modules: [JavaScriptModuleInterface] {
-        return [self]
-    }
-
-}
-
-extension ViewController: WKUIDelegate {
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         let alert = UIAlertController(title: webView.title, message: message, preferredStyle: .alert)
         let sureAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)

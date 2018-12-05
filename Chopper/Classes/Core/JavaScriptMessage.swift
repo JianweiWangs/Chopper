@@ -46,7 +46,7 @@ extension JavaScriptMessage: CustomStringConvertible {
 | module : \(module)
 | action : \(action)
 | callbackID : \(callbackID)
-| params : \(String(describing: params))
+| params : \(String(describing: params?.mapValues { $0.value })))
 ----JavaScriptMessage----
 """
     }
