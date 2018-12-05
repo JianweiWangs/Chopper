@@ -105,7 +105,7 @@ extension ViewController: JavaScriptBridgeDataSource {
 ```
 
 
-3. JavaScript call
+3. JavaScript [Import it](https://github.com/JianweiWangs/Chopper-Js)
 ```javascript
 dispatch('test', 'showAlert', {
   'title': 'Chopper',
