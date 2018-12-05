@@ -10,12 +10,23 @@ import UIKit
 import WebKit
 import Chopper
 
-//MARK: Chopper
+class ViewController: UIViewController  {
 
-extension ViewController : JavaScriptBridgeDataSource {
+    @IBOutlet weak var webview: WKWebView!
 
-    // 这里是当前控制器意图使用哪些模块的交互方法，比如这里有 test，以后可能会有诸如 base net ui pay 等 js 交互
+    var jsbridge: JavaScriptBridge!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        jsbridge = JavaScriptBridge(dataSource: self)
+
+    }
+}
+
+extension ViewController: JavaScriptBridgeDataSource {
+
+    // you can return multiple module instance, the modules more there are, the more actions can be handle
     var modules: [JavaScriptModuleInterface] {
         return [TestModule()]
     }
@@ -30,24 +41,7 @@ extension ViewController : JavaScriptBridgeDataSource {
 
 }
 
-class ViewController: UIViewController  {
 
-    @IBOutlet weak var webview: WKWebView!
-
-    var jsbridge: JavaScriptBridge!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        jsbridge = JavaScriptBridge(dataSource: self)
-
-        setupWebView()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.evaluateJavaScript(script: showAlert)
-        }
-    }
-}
 
 
 

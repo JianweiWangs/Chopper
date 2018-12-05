@@ -7,6 +7,14 @@
 
 ## Example
 
+use 
+```
+git clone https://github.com/JianweiWangs/Chopper.git
+cd FWRouter
+make
+```
+to fetch and build source code quickly.
+
 To run the example project, clone the repo, and run `make` from the root directory first.
 
 There are some script help you develop and PR.
@@ -31,7 +39,84 @@ make quit
 
 Before you pull request, make sure test success.
 
+## Usage
+
+### Quick Start
+
+#### recommand
+
+1. create a javascript module
+```swift
+import Chopper
+class TestModule: JavaScriptModuleInterface {
+
+    // test module
+    var module: String {
+        return "test"
+    }
+    // actions, you can add any action you want
+    var moduleMapping: [String : Dispatch] {
+        return [
+            "showAlert" : showAlert
+        ]
+    }
+
+    func showAlert(message: JavaScriptMessage, callback: @escaping (Bool, [String : Any]) -> Void) {
+        print(message.context.frameViewController)
+        print(message.context.viewController)
+        print(message)
+        callback(true, ["code" : "0"])
+    }
+}
+```
+2. create bridge, inject module to dataSource
+
+```swift
+class ViewController: UIViewController  {
+
+    @IBOutlet weak var webview: WKWebView!
+
+    var jsbridge: JavaScriptBridge!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        jsbridge = JavaScriptBridge(dataSource: self)
+
+    }
+}
+
+extension ViewController: JavaScriptBridgeDataSource {
+
+    // you can return multiple module instance, the modules more there are, the more actions can be handle
+    var modules: [JavaScriptModuleInterface] {
+        return [TestModule()]
+    }
+
+    var viewController: UIViewController {
+        return self
+    }
+
+    var webView: WKWebView {
+        return self.webview
+    }
+
+}
+```
+3. JavaScript call
+```javascript
+dispatch('test', 'showAlert', {
+  'title': 'Chopper',
+  'message': 'this is a js call native test'
+}, function (success, params) {
+  alert('callback isSuccess: ' + success + ' params: ' + params.code)
+})
+
+```
+
 ## Requirements
+
+`Swift 4.0`, `iOS 8.0`
 
 ## Installation
 
