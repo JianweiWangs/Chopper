@@ -8,5 +8,5 @@ clean:
 quit:
 	osascript -e 'quit app "Xcode"'
 test:
-	xcodebuild -scheme Chopper-Example -workspace Example/Chopper.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone Xs,OS=12.1' build test
+	xcodebuild -scheme Chopper-Example -workspace Example/Chopper.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone Xs,OS=12.0' build test
 	
