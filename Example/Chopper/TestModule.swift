@@ -10,16 +10,6 @@ import Chopper
 
 // 可以以 module 来进行分组 比如该 module 为 test
 
-let showAlert =
-"""
-dispatch('test', 'showAlert', {
-'title': 'Chopper',
-'message': '这是一次 js call native 的测试'
-}, function (success, params) {
-alert('callback isSuccess: ' + success + ' params: ' + params.code)
-})
-"""
-
 class TestModule: JavaScriptModuleInterface {
 
     var module: String {

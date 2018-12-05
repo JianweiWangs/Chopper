@@ -31,7 +31,6 @@ public extension JavaScriptModuleInterface {
         guard let nativeAction = moduleMapping[message.action] else {
             return
         }
-        message.context = target.context
         nativeAction(message, { (success, params) in
             target.webView.evaluateJavaScript(message.callbackScript(isSuccess: success, param: params), completionHandler: nil)
         })

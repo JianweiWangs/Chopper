@@ -1,5 +1,7 @@
 
-public typealias Dispatch = (JavaScriptMessage, @escaping (Bool, [String : Any]) -> Void) -> Void
+
+public typealias Callback = (Bool, [String : Any]) -> Void
+public typealias Dispatch = (JavaScriptMessage, @escaping Callback) -> Void
 
 struct Configure {
     static let nativeMessageHandlerName = "chopperNative"

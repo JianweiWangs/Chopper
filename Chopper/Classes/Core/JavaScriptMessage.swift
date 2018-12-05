@@ -24,17 +24,6 @@ public final class JavaScriptMessage: Codable {
         self.action = action
         self.callbackID = UUID().uuidString
     }
-
-//    public func encode(to encoder: Encoder) throws {
-////        let values =
-//    }
-//    public init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        module = try values.decode(String.self, forKey: .module)
-//        action = try values.decode(String.self, forKey: .action)
-//        callbackID = try values.decode(String.self, forKey: .callbackID)
-//        params = (try? values.decode([String : AnyDecodable].self, forKey: .params))
-//    }
 }
 
 

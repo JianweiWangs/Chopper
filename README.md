@@ -43,8 +43,7 @@ Before you pull request, make sure test success.
 
 ### Quick Start
 
-#### recommand
-
+#### Recommended
 1. create a javascript module
 ```swift
 import Chopper
@@ -104,6 +103,8 @@ extension ViewController: JavaScriptBridgeDataSource {
 
 }
 ```
+
+
 3. JavaScript call
 ```javascript
 dispatch('test', 'showAlert', {
@@ -113,6 +114,18 @@ dispatch('test', 'showAlert', {
   alert('callback isSuccess: ' + success + ' params: ' + params.code)
 })
 
+```
+
+You also call use convenience regist to bridge webview script
+
+```swift
+jsbridge.regist(module: "convenience", action: "showAlert") { [unowned self] (message, callback) in
+    //  recommand use message.context.viewController instead of `self`
+    //  if use self, use weak or unowned to avoid reference cycle
+    print(message.context.viewController == self) //  true
+    print(message)
+    callback(true, ["code": 1])
+}
 ```
 
 ## Requirements
