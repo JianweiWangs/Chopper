@@ -9,9 +9,9 @@
 Pod::Spec.new do |s|
   s.name             = 'Chopper'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Chopper.'
+  s.summary          = 'Chopper is a light weight hybrid bridge.'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Chopper is a light weight hybrid bridge, use it can build a hybrid app simple and quickly.
                        DESC
 
   s.homepage         = 'https://github.com/JianweiWangs/Chopper'
@@ -19,6 +19,7 @@ TODO: Add long description of the pod here.
   s.author           = { 'JianweiWangs' => 'wangfei@zhihu.com' }
   s.source           = { :git => 'https://github.com/JianweiWangs/Chopper.git', :tag => s.version.to_s }
   s.platform = :ios, '8.0'
+  s.swift_version = '4.2'
   s.default_subspecs = 'Core'
 
   s.subspec 'Core' do |sub|
