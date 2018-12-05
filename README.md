@@ -10,7 +10,7 @@
 use 
 ```
 git clone https://github.com/JianweiWangs/Chopper.git
-cd FWRouter
+cd Chopper
 make
 ```
 to fetch and build source code quickly.
@@ -72,6 +72,7 @@ class TestModule: JavaScriptModuleInterface {
 2. create bridge, inject module to dataSource
 
 ```swift
+import Chopper
 class ViewController: UIViewController  {
 
     @IBOutlet weak var webview: WKWebView!
